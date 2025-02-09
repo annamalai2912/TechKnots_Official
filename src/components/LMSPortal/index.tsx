@@ -233,7 +233,7 @@ const DiscussionForum = () => (
       <textarea
         placeholder="Start a discussion..."
         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-        rows="3"
+        rows={3}
       ></textarea>
       <button className="bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600">
         Post
