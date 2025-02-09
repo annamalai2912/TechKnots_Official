@@ -1,44 +1,104 @@
+"use client"
 import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const Hero = () => {
+  const containerRef = useRef(null);
+  const { scrollY } = useScroll();
+  
+  // Parallax effects for different elements
+  const titleY = useTransform(scrollY, [0, 300], [0, -50]);
+  const descY = useTransform(scrollY, [0, 300], [0, -30]);
+  const bgY = useTransform(scrollY, [0, 300], [0, 100]);
+  
+  // Background image style for left corner
+  const bgImageStyle = {
+    backgroundImage: "url('bg.jpg')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    filter: 'opacity(0.1)'
+  };
+
   return (
     <>
       <section
+        ref={containerRef}
         id="home"
         className="relative z-10 overflow-hidden bg-white pb-16 pt-[120px] dark:bg-gray-dark md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px] 2xl:pb-[200px] 2xl:pt-[210px]"
       >
-        <div className="container">
+        {/* Left corner background image with parallax */}
+        <motion.div
+          style={{ y: bgY }}
+          className="absolute left-0 top-0 h-[600px] w-[600px] z-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.1 }}
+          transition={{ duration: 1 }}
+          {...bgImageStyle}
+        />
+
+        <div className="container relative">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
               <div className="mx-auto max-w-[800px] text-center">
-                <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
+                {/* Animated title */}
+                <motion.h1
+                  style={{ y: titleY }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight"
+                >
                   Free and Open-Source Next.js Template for Startup & SaaS
-                </h1>
-                <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
+                </motion.h1>
+
+                {/* Animated description */}
+                <motion.p
+                  style={{ y: descY }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                  className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl"
+                >
                   Startup is free Next.js template for startups and SaaS
                   business websites comes with all the essential pages,
                   components, and sections you need to launch a complete
                   business website, built-with Next 13.x and Tailwind CSS.
-                </p>
-                <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+                </motion.p>
+
+                {/* Animated buttons */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                  className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
+                >
                   <Link
                     href="https://nextjstemplates.com/templates/saas-starter-startup"
-                    className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+                    className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80 transform hover:scale-105 transition-all"
                   >
                     🔥 Get Pro
                   </Link>
                   <Link
                     href="https://github.com/NextJSTemplates/startup-nextjs"
-                    className="inline-block rounded-sm bg-black px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-black/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/5"
+                    className="inline-block rounded-sm bg-black px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-black/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/5 transform hover:scale-105 transition-all"
                   >
                     Star on GitHub
                   </Link>
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>
         </div>
-        <div className="absolute right-0 top-0 z-[-1] opacity-30 lg:opacity-100">
+
+        {/* Animated right decoration */}
+        <motion.div
+          style={{ y: bgY }}
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: [0, 0.3, 1], x: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="absolute right-0 top-0 z-[-1] opacity-30 lg:opacity-100"
+        >
           <svg
             width="450"
             height="556"
@@ -175,8 +235,16 @@ const Hero = () => {
               </linearGradient>
             </defs>
           </svg>
-        </div>
-        <div className="absolute bottom-0 left-0 z-[-1] opacity-30 lg:opacity-100">
+        </motion.div>
+
+        {/* Animated left decoration */}
+        <motion.div
+          style={{ y: bgY }}
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: [0, 0.3, 1], x: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="absolute bottom-0 left-0 z-[-1] opacity-30 lg:opacity-100"
+        >
           <svg
             width="364"
             height="201"
@@ -278,7 +346,70 @@ const Hero = () => {
               </radialGradient>
             </defs>
           </svg>
-        </div>
+        </motion.div>
+
+        {/* Floating elements animation */}
+        <motion.div
+          animate={{
+            y: [0, -10, 0],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+          className="absolute right-20 top-32 h-16 w-16 rounded-full bg-primary/10 z-[-1]"
+        />
+        <motion.div
+          animate={{
+            y: [0, 10, 0],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+          className="absolute left-40 bottom-20 h-20 w-20 rounded-full bg-primary/10 z-[-1]"
+        />
+
+        {/* Additional animated floating elements */}
+        <motion.div
+          animate={{
+            scale: [1, 1.1, 1],
+            rotate: [0, 5, 0],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+          className="absolute right-40 bottom-40 h-12 w-12 rounded-lg bg-primary/5 z-[-1]"
+        />
+
+        {/* Mouse scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        >
+          <div className="flex flex-col items-center">
+            <motion.div
+              animate={{
+                y: [0, 8, 0],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
+              className="h-6 w-3 border-2 border-primary rounded-full p-1"
+            >
+              <div className="h-1 w-1 bg-primary rounded-full" />
+            </motion.div>
+            <span className="mt-2 text-sm text-gray-500">Scroll</span>
+          </div>
+        </motion.div>
       </section>
     </>
   );

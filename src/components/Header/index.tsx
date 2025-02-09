@@ -13,28 +13,7 @@ const menuData = [
   },
   {
     title: "LMS Portal",
-    submenu: [
-      {
-        title: "My Courses",
-        path: "/courses",
-      },
-      {
-        title: "Learning Path",
-        path: "/learning-path",
-      },
-      {
-        title: "Assignments",
-        path: "/assignments",
-      },
-      {
-        title: "Progress Tracking",
-        path: "/progress",
-      },
-      {
-        title: "Certificates",
-        path: "/certificates",
-      }
-    ]
+    path:"/lms"
   },
   {
     title: "Services",
@@ -152,14 +131,14 @@ const Header = () => {
                 } `}
               >
                 <Image
-                  src="/images/logo/logo-2.svg"
+                  src="/images/logo/techknots.png"
                   alt="logo"
                   width={140}
                   height={30}
                   className="w-full dark:hidden"
                 />
                 <Image
-                  src="/images/logo/logo.svg"
+                  src="/images/logo/techknots.png"
                   alt="logo"
                   width={140}
                   height={30}

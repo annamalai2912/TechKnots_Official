@@ -9,13 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^6.4.3",
     "eslint": "^8.56.0",
     "eslint-config-next": "15.1.6",
+    "framer-motion": "^12.4.1",
+    "lucide-react": "^0.475.0",
     "next": "^15.1.6",
     "next-themes": "^0.2.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-modal-video": "^2.0.1"
+    "react-intersection-observer": "^9.15.1",
+    "react-modal-video": "^2.0.1",
+    "shadcn": "^2.3.0",
+    "shadcn-ui": "^0.9.4"
   },
   "devDependencies": {
     "@types/node": "^20.8.9",

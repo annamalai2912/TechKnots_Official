@@ -16,45 +16,47 @@ module.exports = {
 
     screens: {
       xs: "450px",
-      // => @media (min-width: 450px) { ... }
-
       sm: "575px",
-      // => @media (min-width: 576px) { ... }
-
       md: "768px",
-      // => @media (min-width: 768px) { ... }
-
       lg: "992px",
-      // => @media (min-width: 992px) { ... }
-
       xl: "1200px",
-      // => @media (min-width: 1200px) { ... }
-
       "2xl": "1400px",
-      // => @media (min-width: 1400px) { ... }
     },
     extend: {
       colors: {
         current: "currentColor",
         transparent: "transparent",
         white: "#FFFFFF",
-        black: "#121723",
-        dark: "#1D2430",
-        primary: "#4A6CF7",
+        black: "#0A0A0A",
+        dark: "#121212",
+        primary: "#10B981", // Changed to emerald-500
         yellow: "#FBB040",
-        "bg-color-dark": "#171C28",
+        "bg-color-dark": "#0F172A",
         "body-color": {
-          DEFAULT: "#788293",
-          dark: "#959CB1",
+          DEFAULT: "#64748B", // Changed to slate-500
+          dark: "#94A3B8", // Changed to slate-400
         },
         stroke: {
-          stroke: "#E3E8EF",
-          dark: "#353943",
+          stroke: "#E2E8F0", // Changed to slate-200
+          dark: "#1E293B", // Changed to slate-800
         },
         gray: {
           ...colors.gray,
-          dark: "#1E232E",
-          light: "#F0F2F9",
+          dark: "#020617", // Changed to slate-950
+          light: "#F8FAFC", // Changed to slate-50
+        },
+        green: {
+          50: "#F0FDF4",
+          100: "#DCFCE7",
+          200: "#BBF7D0",
+          300: "#86EFAC",
+          400: "#4ADE80",
+          500: "#22C55E",
+          600: "#16A34A",
+          700: "#15803D",
+          800: "#166534",
+          900: "#14532D",
+          950: "#052E16",
         },
       },
 
@@ -65,7 +67,7 @@ module.exports = {
         three: "0px 5px 15px rgba(6, 8, 15, 0.05)",
         sticky: "inset 0 -1px 0 0 rgba(0, 0, 0, 0.1)",
         "sticky-dark": "inset 0 -1px 0 0 rgba(255, 255, 255, 0.1)",
-        "feature-2": "0px 10px 40px rgba(48, 86, 211, 0.12)",
+        "feature-2": "0px 10px 40px rgba(34, 197, 94, 0.12)", // Updated to green shadow
         submit: "0px 5px 20px rgba(4, 10, 34, 0.1)",
         "submit-dark": "0px 5px 20px rgba(4, 10, 34, 0.1)",
         btn: "0px 1px 2px rgba(4, 10, 34, 0.15)",
