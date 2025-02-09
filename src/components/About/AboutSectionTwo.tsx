@@ -41,7 +41,7 @@ const AboutSectionTwo = () => {
                   Value Added Courses
                 </h3>
                 <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed">
-                  We offer 1-3 credit courses designed to enhance students' employability quotient and 
+                  We offer 1-3 credit courses designed to enhance students employability quotient and 
                   equip them with essential skills. Our courses cover IoT, PCB design, drone technology, 
                   electric vehicles, and more.
                 </p>

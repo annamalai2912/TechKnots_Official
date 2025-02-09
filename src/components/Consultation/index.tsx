@@ -287,7 +287,7 @@ const Consultation = () => {
       <div className="bg-green-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
-          <p className="text-xl mb-8">Let's discuss how we can help you achieve your goals</p>
+          <p className="text-xl mb-8">Let&apos;s discuss how we can help you achieve your goals</p>
           <button
             onClick={() => setIsFormOpen(true)}
             className="bg-white text-green-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors"

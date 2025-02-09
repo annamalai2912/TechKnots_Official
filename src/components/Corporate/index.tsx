@@ -192,7 +192,7 @@ const CorporateTraining = () => {
                 <GraduationCap className="h-6 w-6 text-green-600" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Customized Learning</h3>
-              <p className="text-gray-600">Tailored programs designed to meet your organization's specific needs and objectives.</p>
+              <p className="text-gray-600">Tailored programs designed to meet your organization&apos;s specific needs and objectives.</p>
             </div>
             <div className="bg-white rounded-xl shadow-lg p-6">
               <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-4">

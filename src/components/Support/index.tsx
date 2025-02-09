@@ -106,7 +106,7 @@ const TechnicalSupport = () => {
           <div className="text-center py-8">
             <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
             <h3 className="text-xl font-semibold mb-2">Support Request Submitted!</h3>
-            <p className="text-gray-600">We'll get back to you within 24 hours.</p>
+            <p className="text-gray-600">We&apos;ll get back to you within 24 hours.</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
