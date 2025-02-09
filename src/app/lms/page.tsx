@@ -12,8 +12,10 @@ export const metadata: Metadata = {
 const LMSPage = () => {
   return (
     <>
-    <LMSBox/>
-    <LMSBox/>
+      <Breadcrumb
+        pageName="LMS Portal"
+        description=""
+      />
       <LMSPortal />
     </>
   );
