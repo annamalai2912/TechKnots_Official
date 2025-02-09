@@ -49,7 +49,8 @@ const Hero = () => {
                   transition={{ duration: 0.8, ease: "easeOut" }}
                   className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight"
                 >
-                  Free and Open-Source Next.js Template for Startup & SaaS
+                Transform Your Learning Journey Bridging the Gap
+                Theory to Practice
                 </motion.h1>
 
                 {/* Animated description */}
@@ -60,10 +61,8 @@ const Hero = () => {
                   transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                   className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl"
                 >
-                  Startup is free Next.js template for startups and SaaS
-                  business websites comes with all the essential pages,
-                  components, and sections you need to launch a complete
-                  business website, built-with Next 13.x and Tailwind CSS.
+                TechKnots ties the knot between theoretical and practical engineering education,
+                providing hands-on training from beginner to advanced levels.
                 </motion.p>
 
                 {/* Animated buttons */}
@@ -77,7 +76,7 @@ const Hero = () => {
                     href="https://nextjstemplates.com/templates/saas-starter-startup"
                     className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80 transform hover:scale-105 transition-all"
                   >
-                    🔥 Get Pro
+                    🔥 Get Started
                   </Link>
                   <Link
                     href="https://github.com/NextJSTemplates/startup-nextjs"
