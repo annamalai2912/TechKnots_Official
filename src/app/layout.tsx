@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="light"> {/* Forces light mode */}
       <head />
-      <body className={`bg-[#FCFCFC] ${inter.className}`}>
+      <body>
         <Providers>
           <Header />
           {children}
