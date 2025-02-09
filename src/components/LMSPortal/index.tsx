@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import { 
   Home, Menu, Calendar, Book, Award, BarChart2, GitBranch, 
   Search, Settings, LogOut, ChevronDown, Bell, Cpu, Database,
-  Brain, Cloud, Activity, Users, Code, Radar
+  Brain, Cloud, Activity, Users, Code, Radar, Video, Play,
+  MessageCircle, FileText, CheckCircle, PlusCircle, BookOpen,
+  Download, Clock, Star
 } from 'lucide-react';
 
-// Mock data for a tech-focused LMS
+// Enhanced mock data with video content
 const techCourses = [
   {
     id: 1,
@@ -15,11 +17,45 @@ const techCourses = [
     progress: 75,
     instructor: 'Dr. Sarah Chen',
     duration: '8 weeks',
+    thumbnail: '/api/placeholder/400/225',
+    videoURL: 'https://meet.google.com/abc-defg-hij',
+    description: 'Learn about advanced IoT sensor networks and their real-world applications.',
+    nextSession: '2024-02-15T14:00:00',
+    rating: 4.8,
+    totalStudents: 256,
+    materials: [
+      { type: 'video', title: 'Introduction to Sensor Networks', duration: '45 min' },
+      { type: 'pdf', title: 'Network Topology Guide', size: '2.4 MB' },
+      { type: 'quiz', title: 'Week 1 Assessment', questions: 10 }
+    ],
     modules: [
       { id: 1, title: 'Sensor Types & Architecture', completed: true },
       { id: 2, title: 'Network Protocols', completed: true },
       { id: 3, title: 'Data Collection & Processing', completed: false },
       { id: 4, title: 'Edge Computing Implementation', completed: false }
+    ],
+    videos: [
+      { 
+        id: 1, 
+        title: 'Introduction to IoT Networks',
+        thumbnail: '/api/placeholder/400/225',
+        duration: '15:30',
+        watched: true
+      },
+      { 
+        id: 2, 
+        title: 'Sensor Types Overview',
+        thumbnail: '/api/placeholder/400/225',
+        duration: '22:15',
+        watched: true
+      },
+      { 
+        id: 3, 
+        title: 'Network Protocols Deep Dive',
+        thumbnail: '/api/placeholder/400/225',
+        duration: '18:45',
+        watched: false
+      }
     ]
   },
   {
@@ -29,11 +65,38 @@ const techCourses = [
     progress: 45,
     instructor: 'Prof. James Wilson',
     duration: '10 weeks',
+    thumbnail: '/api/placeholder/400/225',
+    videoURL: 'https://meet.google.com/xyz-abcd-efg',
+    description: 'Master machine learning techniques for predictive analytics.',
+    nextSession: '2024-02-16T15:00:00',
+    rating: 4.9,
+    totalStudents: 312,
+    materials: [
+      { type: 'video', title: 'ML Fundamentals', duration: '50 min' },
+      { type: 'pdf', title: 'Statistical Learning Guide', size: '3.1 MB' },
+      { type: 'quiz', title: 'Basic Concepts Quiz', questions: 15 }
+    ],
     modules: [
       { id: 1, title: 'Statistical Learning Foundations', completed: true },
       { id: 2, title: 'Supervised Learning Algorithms', completed: false },
       { id: 3, title: 'Model Optimization', completed: false },
       { id: 4, title: 'Production Deployment', completed: false }
+    ],
+    videos: [
+      { 
+        id: 1, 
+        title: 'Introduction to ML',
+        thumbnail: '/api/placeholder/400/225',
+        duration: '20:15',
+        watched: true
+      },
+      { 
+        id: 2, 
+        title: 'Statistical Learning Basics',
+        thumbnail: '/api/placeholder/400/225',
+        duration: '25:30',
+        watched: false
+      }
     ]
   },
   {
@@ -43,11 +106,38 @@ const techCourses = [
     progress: 90,
     instructor: 'Dr. Michael Chang',
     duration: '12 weeks',
+    thumbnail: '/api/placeholder/400/225',
+    videoURL: 'https://meet.google.com/pqr-stuv-wxy',
+    description: 'Comprehensive deep learning course using PyTorch framework.',
+    nextSession: '2024-02-17T16:00:00',
+    rating: 4.7,
+    totalStudents: 428,
+    materials: [
+      { type: 'video', title: 'Neural Networks Basics', duration: '40 min' },
+      { type: 'pdf', title: 'PyTorch Installation Guide', size: '1.8 MB' },
+      { type: 'quiz', title: 'PyTorch Fundamentals', questions: 12 }
+    ],
     modules: [
       { id: 1, title: 'Neural Network Basics', completed: true },
       { id: 2, title: 'Convolutional Networks', completed: true },
       { id: 3, title: 'Recurrent Networks', completed: true },
       { id: 4, title: 'Advanced Architectures', completed: false }
+    ],
+    videos: [
+      { 
+        id: 1, 
+        title: 'PyTorch Basics',
+        thumbnail: '/api/placeholder/400/225',
+        duration: '18:20',
+        watched: true
+      },
+      { 
+        id: 2, 
+        title: 'Building Neural Networks',
+        thumbnail: '/api/placeholder/400/225',
+        duration: '23:45',
+        watched: true
+      }
     ]
   }
 ];
@@ -56,8 +146,101 @@ const achievements = [
   { id: 1, name: 'IoT Pioneer', icon: <Cpu className="w-8 h-8 text-emerald-500" />, points: 500, unlocked: true },
   { id: 2, name: 'ML Master', icon: <Brain className="w-8 h-8 text-emerald-500" />, points: 750, unlocked: true },
   { id: 3, name: 'Data Wizard', icon: <Database className="w-8 h-8 text-emerald-500" />, points: 1000, unlocked: false },
-  { id: 4, name: 'AI Innovator', icon: < Radar className="w-8 h-8 text-emerald-500" />, points: 1200, unlocked: false },
+  { id: 4, name: 'AI Innovator', icon: <Radar className="w-8 h-8 text-emerald-500" />, points: 1200, unlocked: false },
 ];
+
+const VideoMeeting = ({ meetingURL }) => (
+  <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+    <div className="p-4 border-b flex justify-between items-center">
+      <h3 className="font-semibold flex items-center">
+        <Video className="w-5 h-5 mr-2 text-emerald-500" />
+        Live Session
+      </h3>
+      <button className="bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 flex items-center">
+        <PlusCircle className="w-4 h-4 mr-2" />
+        New Meeting
+      </button>
+    </div>
+    <div className="aspect-video">
+      <iframe
+        src={meetingURL}
+        allow="camera; microphone; fullscreen; display-capture; autoplay"
+        className="w-full h-full border-0"
+      ></iframe>
+    </div>
+  </div>
+);
+
+const CourseVideoCard = ({ video }) => (
+  <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+    <div className="relative group">
+      <img src={video.thumbnail} alt={video.title} className="w-full h-48 object-cover" />
+      <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+        <Play className="w-12 h-12 text-white" />
+      </div>
+      {video.watched && (
+        <div className="absolute top-2 right-2 bg-emerald-500 text-white text-xs px-2 py-1 rounded">
+          Watched
+        </div>
+      )}
+    </div>
+    <div className="p-4">
+      <h4 className="font-semibold mb-2">{video.title}</h4>
+      <div className="flex items-center text-sm text-gray-600">
+        <Clock className="w-4 h-4 mr-1" />
+        <span>{video.duration}</span>
+      </div>
+    </div>
+  </div>
+);
+
+const CourseMaterials = ({ materials }) => (
+  <div className="bg-white rounded-lg shadow-sm p-6">
+    <h3 className="font-semibold mb-4 flex items-center">
+      <FileText className="w-5 h-5 mr-2 text-emerald-500" />
+      Course Materials
+    </h3>
+    <div className="space-y-4">
+      {materials.map((material, index) => (
+        <div key={index} className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50">
+          <div className="flex items-center">
+            {material.type === 'video' && <Play className="w-5 h-5 mr-3 text-emerald-500" />}
+            {material.type === 'pdf' && <FileText className="w-5 h-5 mr-3 text-blue-500" />}
+            {material.type === 'quiz' && <CheckCircle className="w-5 h-5 mr-3 text-purple-500" />}
+            <div>
+              <div className="font-medium">{material.title}</div>
+              <div className="text-sm text-gray-500">
+                {material.duration || material.size || `${material.questions} questions`}
+              </div>
+            </div>
+          </div>
+          <button className="text-emerald-500 hover:text-emerald-600">
+            {material.type === 'video' ? 'Watch' : material.type === 'pdf' ? 'Download' : 'Start'}
+          </button>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+const DiscussionForum = () => (
+  <div className="bg-white rounded-lg shadow-sm p-6">
+    <h3 className="font-semibold mb-4 flex items-center">
+      <MessageCircle className="w-5 h-5 mr-2 text-emerald-500" />
+      Discussion Forum
+    </h3>
+    <div className="space-y-4">
+      <textarea
+        placeholder="Start a discussion..."
+        className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        rows="3"
+      ></textarea>
+      <button className="bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600">
+        Post
+      </button>
+    </div>
+  </div>
+);
 
 const TechKnotsLMS = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -128,14 +311,14 @@ const TechKnotsLMS = () => {
           Upcoming Sessions
         </h3>
         <div className="space-y-4">
-          <div className="p-3 border rounded-lg">
-            <div className="font-medium">IoT Security Workshop</div>
-            <div className="text-sm text-gray-500">Tomorrow, 2:00 PM</div>
-          </div>
-          <div className="p-3 border rounded-lg">
-            <div className="font-medium">ML Model Deployment</div>
-            <div className="text-sm text-gray-500">Friday, 11:00 AM</div>
-          </div>
+          {techCourses.map(course => (
+            <div key={course.id} className="p-3 border rounded-lg">
+              <div className="font-medium">{course.title}</div>
+              <div className="text-sm text-gray-500">
+                {new Date(course.nextSession).toLocaleString()}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -145,35 +328,71 @@ const TechKnotsLMS = () => {
     if (!selectedCourse) return null;
     
     return (
-      <div className="bg-white rounded-lg shadow-sm p-6">
-        <div className="flex justify-between items-start mb-6">
-          <div>
-            <h2 className="text-2xl font-semibold mb-2">{selectedCourse.title}</h2>
-            <p className="text-gray-600">Instructor: {selectedCourse.instructor}</p>
-            <p className="text-gray-600">Duration: {selectedCourse.duration}</p>
+      <div className="space-y-6">
+        {/* Course Header */}
+        <div className="bg-white rounded-lg shadow-sm p-6">
+          <div className="flex justify-between items-start mb-6">
+            <div>
+              <h2 className="text-2xl font-semibold mb-2">{selectedCourse.title}</h2>
+              <p className="text-gray-600 mb-4">{selectedCourse.description}</p>
+              <div className="flex items-center space-x-4 text-sm">
+                <div className="flex items-center">
+                  <Users className="w-4 h-4 mr-1 text-gray-500" />
+                  <span>{selectedCourse.totalStudents} students</span>
+                </div>
+                <div className="flex items-center">
+                  <Star className="w-4 h-4 mr-1 text-yellow-500" />
+                  <span>{selectedCourse.rating}/5.0</span>
+                </div>
+                <div className="flex items-center">
+                  <Clock className="w-4 h-4 mr-1 text-gray-500" />
+                  <span>{selectedCourse.duration}</span>
+                </div>
+              </div>
+            </div>
+            <button 
+              onClick={() => setSelectedCourse(null)}
+              className="text-gray-500 hover:text-gray-700"
+            >
+              ×
+            </button>
           </div>
-          <button 
-            onClick={() => setSelectedCourse(null)}
-            className="text-gray-500 hover:text-gray-700"
-          >
-            ×
-          </button>
+
+          <div className="mb-6">
+            <div className="flex justify-between mb-2">
+              <span className="font-medium">Overall Progress</span>
+              <span>{selectedCourse.progress}%</span>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-2">
+              <div 
+                className="bg-emerald-500 rounded-full h-2 transition-all duration-300"
+                style={{ width: `${selectedCourse.progress}%` }}
+              ></div>
+            </div>
+          </div>
         </div>
 
-        <div className="mb-6">
-          <div className="flex justify-between mb-2">
-            <span className="font-medium">Progress</span>
-            <span>{selectedCourse.progress}%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div 
-              className="bg-emerald-500 rounded-full h-2 transition-all duration-300"
-              style={{ width: `${selectedCourse.progress}%` }}
-            ></div>
+        {/* Video Meeting Section */}
+        <VideoMeeting meetingURL={selectedCourse.videoURL} />
+
+        {/* Course Videos */}
+        <div className="bg-white rounded-lg shadow-sm p-6">
+          <h3 className="font-semibold mb-4 flex items-center">
+            <Play className="w-5 h-5 mr-2 text-emerald-500" />
+            Course Videos
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {selectedCourse.videos.map(video => (
+              <CourseVideoCard key={video.id} video={video} />
+            ))}
           </div>
         </div>
 
-        <div>
+        {/* Course Materials Section */}
+        <CourseMaterials materials={selectedCourse.materials} />
+
+        {/* Course Modules */}
+        <div className="bg-white rounded-lg shadow-sm p-6">
           <h3 className="font-semibold mb-4">Course Modules</h3>
           <div className="space-y-3">
             {selectedCourse.modules.map(module => (
@@ -188,13 +407,16 @@ const TechKnotsLMS = () => {
                     {module.title}
                   </span>
                   {module.completed && (
-                    <span className="text-emerald-500">✓</span>
+                    <CheckCircle className="w-5 h-5 text-emerald-500" />
                   )}
                 </div>
               </div>
             ))}
           </div>
         </div>
+
+        {/* Discussion Forum */}
+        <DiscussionForum />
       </div>
     );
   };
@@ -208,6 +430,11 @@ const TechKnotsLMS = () => {
             className="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
             onClick={() => setSelectedCourse(course)}
           >
+            <img 
+              src={course.thumbnail} 
+              alt={course.title} 
+              className="w-full h-48 object-cover"
+            />
             <div className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <span className="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">
@@ -219,6 +446,16 @@ const TechKnotsLMS = () => {
               <p className="text-gray-600 text-sm mb-4">
                 Instructor: {course.instructor}
               </p>
+              <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                <span className="flex items-center">
+                  <Clock className="w-4 h-4 mr-1" />
+                  {course.duration}
+                </span>
+                <span className="flex items-center">
+                  <Star className="w-4 h-4 mr-1 text-yellow-500" />
+                  {course.rating}
+                </span>
+              </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
                 <div 
                   className="bg-emerald-500 rounded-full h-2 transition-all duration-300"
@@ -243,7 +480,7 @@ const TechKnotsLMS = () => {
         <div className="w-64 p-6 h-full flex flex-col">
           <div className="flex items-center mb-8">
             <Cpu className="h-8 w-8 text-emerald-500 mr-2" />
-            <span className="text-xl font-bold">Welcome..</span>
+            <span className="text-xl font-bold">TechKnots LMS</span>
           </div>
 
           <nav className="flex-1 space-y-2">
@@ -336,7 +573,7 @@ const TechKnotsLMS = () => {
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
                 </div>
-                </div>
+              </div>
 
               {/* Notifications */}
               <div className="flex items-center space-x-4">
@@ -439,7 +676,7 @@ const TechKnotsLMS = () => {
             <div className="bg-white rounded-lg shadow-sm p-6">
               <div className="text-center text-gray-500">
                 Calendar integration coming soon...
-              </div>
+                </div>
             </div>
           )}
           {currentSection === 'settings' && (
