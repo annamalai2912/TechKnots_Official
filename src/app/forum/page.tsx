@@ -1,25 +1,24 @@
+import CommunityForum from "@/components/Forum";
 import Breadcrumb from "@/components/Common/Breadcrumb";
-import Contact from "@/components/Contact";
 
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Community Forum",
   description: "",
   // other metadata
 };
 
-const ContactPage = () => {
+const AboutPage = () => {
   return (
     <>
       <Breadcrumb
-        pageName="Contact Us"
+        pageName="Community Forum"
         description=""
       />
-
-      <Contact />
+      <CommunityForum/>
     </>
   );
 };
 
-export default ContactPage;
+export default AboutPage;

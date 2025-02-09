@@ -1,25 +1,24 @@
+import CustomSolutions from "@/components/Custom";
 import Breadcrumb from "@/components/Common/Breadcrumb";
-import Contact from "@/components/Contact";
 
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Custom Solutions ",
   description: "",
   // other metadata
 };
 
-const ContactPage = () => {
+const AboutPage = () => {
   return (
     <>
       <Breadcrumb
-        pageName="Contact Us"
+        pageName="Custom Solutions"
         description=""
       />
-
-      <Contact />
+      <CustomSolutions/>
     </>
   );
 };
 
-export default ContactPage;
+export default AboutPage;

@@ -7,8 +7,8 @@ import Image from "next/image";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog Details Page | Free Next.js Template for Startup and SaaS",
-  description: "This is Blog Details Page for Startup Nextjs Template",
+  title: "Blog Details ",
+  description: "",
   // other metadata
 };
 
@@ -38,7 +38,7 @@ const BlogSidebarPage = () => {
                       </div>
                       <div className="w-full">
                         <span className="mb-1 text-base font-medium text-body-color">
-                          By <span> Musharof Chy</span>
+                          By <span> Abdul Azar</span>
                         </span>
                       </div>
                     </div>

@@ -1,25 +1,24 @@
+import TechnicalSupport from "@/components/Support";
 import Breadcrumb from "@/components/Common/Breadcrumb";
-import Contact from "@/components/Contact";
 
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Technical SUpport Page ",
   description: "",
   // other metadata
 };
 
-const ContactPage = () => {
+const AboutPage = () => {
   return (
     <>
       <Breadcrumb
-        pageName="Contact Us"
+        pageName="Technical Support Page"
         description=""
       />
-
-      <Contact />
+      <TechnicalSupport/>
     </>
   );
 };
 
-export default ContactPage;
+export default AboutPage;

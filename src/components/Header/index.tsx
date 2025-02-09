@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import ThemeToggler from "./ThemeToggler";
+
 
 // Enhanced menu data with LMS and services sections
 const menuData = [
@@ -70,7 +70,7 @@ const menuData = [
       },
       {
         title: "FAQs",
-        path: "/faqs",
+        path: "/faq",
       },
       {
         title: "Technical Support",
@@ -246,7 +246,7 @@ const Header = () => {
                   Sign Up
                 </Link>
                 <div>
-                  <ThemeToggler />
+                  
                 </div>
               </div>
             </div>
